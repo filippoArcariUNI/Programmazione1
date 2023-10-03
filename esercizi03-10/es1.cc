@@ -11,7 +11,7 @@ int main(){
     {
         if (i==1)
         {
-          cout << npre<< endl ;
+          cout << npre<< endl;
         }else
         {
             

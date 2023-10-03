@@ -4,8 +4,11 @@ using namespace std;
 int main(){
     int n;
    
-    cout << "Inserisci un numero" << endl ;
-    cin >> n;
+do
+    {
+    cout << "Inserisci il valore N" << endl;
+        cin >> n;
+    } while (n<0 || n>1000);
 
     for (int i = 2; i < n; i++)
     {
