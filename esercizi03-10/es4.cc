@@ -17,7 +17,6 @@ int main(){
             counter++;
         }
         
-        
        }
        if (counter<=1 )
         {

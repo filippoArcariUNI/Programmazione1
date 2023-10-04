@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/workspaces/EsercitazioniLab/esercizi28-09",
-      "program": "/workspaces/EsercitazioniLab/esercizi28-09/build/Debug/outDebug",
+      "cwd": "/workspaces/EsercitazioniLab",
+      "program": "/workspaces/EsercitazioniLab/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

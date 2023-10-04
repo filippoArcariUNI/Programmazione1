@@ -55,5 +55,10 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "cmake.sourceDirectory": "/workspaces/EsercitazioniLab/esercizi03-10",
+  "files.associations": {
+    "cmath": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
