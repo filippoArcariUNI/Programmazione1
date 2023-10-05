@@ -26,5 +26,5 @@ int main(){
        
         
     }
-    cout << "Il Numero in Decimale è: " << decimale << endl ;
+    cout << "Il Numero in Decimale è:" << decimale << endl ;
 }
