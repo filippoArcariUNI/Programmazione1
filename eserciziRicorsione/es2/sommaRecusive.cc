@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 int summ(int n=0,int n1=0){
-    
+    int somma=0;
     if (n>=0)
     {
         somma+=n;
@@ -18,6 +18,7 @@ int summ(int n=0,int n1=0){
         summ(n1-1);
         n1--;
     }
+    return somma;
 }
 int chiamaSumm(int n,int n1){
     int somma =0;
