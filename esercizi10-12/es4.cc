@@ -1,30 +1,30 @@
 #include <iostream> 
 using namespace std;
 
-int max(int a=0 ,int b=0, int c=0, int d =0 ,int e=0){
 
-}
 
 int main(){
-    int a,b,c,d,e;
+    int a,max=0;
+    
     int counter=0;
 
     do
     {
-        cout << "inserisci Un numero, Inserisci A per uscire "<< endl;
-        if (counter==0)
+        cout << "Inserisci un Numero, '-1' per uscire"<< endl;
+        cin >> a;
+        if (a==-1)
         {
-           cin << a;
-        }
-        if (a=='A')
-        {
-            break;
+           break;
         }
         
+        if (a>max)
+        {
+            max=a;
+        }
         
         counter++;
-    } while (counter<=5);
+    } while (counter<=4);
 
-    cout << "il massimo é :" << max(a,b,c,d,e)<<endl;
+    cout << "il massimo é :" << max <<endl;
     
 }
