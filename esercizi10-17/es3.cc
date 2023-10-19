@@ -1,21 +1,20 @@
 #include <iostream>
 using namespace std;
 
-int decimaletoBinario(int n){
-    if(n>0)
+void decimaletoBinario(int n){
+    if(n==0)
     {
-        cout << n%2;
-        decimaletoBinario(n/2);
-        
-    }else{
-        return n;
+        return;
     }
-    
-}
+
+    decimaletoBinario(n/2); 
+    cout << n%2; 
+}   
 
 int main(){
-    int n;
+    int n=0;
     cout << "Inserisci un numero" << endl;
     cin >> n;
-    cout << "Il numero in binario è: " << decimaletoBinario(n) << endl;
+    decimaletoBinario(n);
+    cout << endl;
 }
