@@ -36,7 +36,7 @@ void stampatorreHanoi(int i=0){
 void risolviHanoi(int i=0){
 
     //Sposto a dx
-    if (paletto3[5]!=1){
+    if (paletto3[4]!=1){
         if (paletto1[i]<paletto2[i]){
             sposta(&paletto1[i],&paletto2[i]);
         }
