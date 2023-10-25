@@ -2,9 +2,14 @@
 using namespace std;
 void aggiungiArray(int arr[], int value, int indice,int dimensione){
     
-    for (int i = dimensione-1; i > indice; i++)
+    for (int i = dimensione-1; i > indice; i--)
     {
-        /* code */
+        arr[i]=arr[i-1];
+    }
+    arr[indice]=value;
+    for (int  i = indice-1; i < 0; i--)
+    {
+        arr[i]=arr[i];
     }
     
 
