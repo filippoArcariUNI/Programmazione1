@@ -8,15 +8,15 @@ using namespace std;
 
 void riempimentoCasualeArray(int arr[], int dimensione);
 void stampaArray(int arr[],int dimensione);
-void bubbleSortRec(int [],int , int);
+void bubbleSortRec(int [],int , int , int );
 
 int main(){
     srand(time(NULL));
-    const int dimensione=100;
+    const int dimensione=10;
     int arr[dimensione];
     riempimentoCasualeArray(arr,dimensione);
     stampaArray(arr,dimensione);
-    bubbleSortRec(arr,dimensione,0);
+    bubbleSortRec(arr,dimensione,0,0);
     stampaArray(arr,dimensione);
 
     return 0;
@@ -41,33 +41,45 @@ void stampaArray(int arr[],int dimensione){
         }
         
     }
+    cout << endl;
+    
 
 }
 
-void bubbleSortRec(int arr[],int dimensione, int i){
+void bubbleSortRec(int arr[],int dimensione, int i, int j){
     bool scambi=false;
-    if () // tovare un modo per fare si che ritorni in ricorsione per tutti gli elementi 
+    
+    if (j<dimensione)
     {
-        return;
-    }else{
-        if (i==dimensione-1)
+        i=j;
+        if (i<dimensione)
         {
-            return;
-        }else{
+            cout << endl;
+            cout << arr[i]<< endl;
+            cout << arr[i+1]<< endl;
+            cout << "-----Scambiato-------"<< endl;
+
             if (arr[i] > arr[i+1])
             {
                 int t=arr[i+1];
-                arr[i] = arr[i+1];
+                arr[i+1] = arr[i];
                 arr[i]=t;
                 scambi=true;
 
             }
+            cout << arr[i]<< endl;
+            cout << arr[i+1]<< endl;
+            cout << endl;
 
+        }else{
+            bubbleSortRec(arr,dimensione,i+1,j);
         }
-    bubbleSortRec(arr,dimensione-1,i+1);
+        
+    }else{
+            bubbleSortRec(arr,dimensione,i,j+1);
+
     }
-    
-    bubbleSortRec(arr,dimensione-1,i+1);
+
 
     if (!scambi)
     {
