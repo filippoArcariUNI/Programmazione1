@@ -48,36 +48,32 @@ void stampaArray(int arr[],int dimensione){
 
 void bubbleSortRec(int arr[],int dimensione, int i, int j){
     bool scambi=false;
-    
-    if (j<dimensione)
-    {
-        i=j;
-        if (i<dimensione)
+
+     if (i<dimensione-1)
         {
-            cout << endl;
-            cout << arr[i]<< endl;
-            cout << arr[i+1]<< endl;
-            cout << "-----Scambiato-------"<< endl;
 
             if (arr[i] > arr[i+1])
             {
+          
                 int t=arr[i+1];
                 arr[i+1] = arr[i];
                 arr[i]=t;
                 scambi=true;
 
+                
             }
-            cout << arr[i]<< endl;
-            cout << arr[i+1]<< endl;
-            cout << endl;
 
-        }else{
             bubbleSortRec(arr,dimensione,i+1,j);
+            
         }
+    stampaArray(arr,10);
+    if (j<dimensione-1)
+    {
+        i=0;
+       bubbleSortRec(arr,dimensione,i,j+1);
         
     }else{
-            bubbleSortRec(arr,dimensione,i,j+1);
-
+        return;
     }
 
 
