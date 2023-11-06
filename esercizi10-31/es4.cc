@@ -58,11 +58,11 @@ void filtroMedio(int  matrix[righe][colonne],int filtroMedio[][colonne]){
     {
         for (int  j = 0; j < colonne; j++)
         {
-           if (j==colonne)
+           if (j==colonne-1)
            {
                 int arr[]={matrix[i][j-1],matrix[i-1][j]};
                 matrix[i][j]=media(arr,2);
-           }else if (i==righe)
+           }else if (i==righe-1)
            {
                 int arr[]={matrix[i-1][j],matrix[i][j-1]};
                 matrix[i][j]=media(arr,2);
@@ -84,7 +84,18 @@ void filtroMedio(int  matrix[righe][colonne],int filtroMedio[][colonne]){
     
 }
 
+void stampaArray(const int arr[],int dimensione){
+
+    for (int i = 0; i < dimensione; i++)
+    {
+        cout << arr[i] << "  ";
+    }
+
+}
+
 double media(int arr[], int dimensione){
+    stampaArray(arr,3);
+    cout << endl;
     double somma=*(arr);
     for (int  i = 1; i < dimensione-1; i++)
     {
