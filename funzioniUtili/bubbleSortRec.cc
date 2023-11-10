@@ -67,13 +67,13 @@ void bubbleSortRec(int arr[],int dimensione, int i, int j){
             
         }
     stampaArray(arr,10);
-    if (scambi && j<=dimensione-1)
+    if (scambi || j<=dimensione-1)
     {
         i=0;
        bubbleSortRec(arr,dimensione,i,j+1);
         
     }else{
-        exit 0;
+        return;
     }
    
 }
