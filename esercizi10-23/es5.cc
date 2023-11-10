@@ -61,9 +61,14 @@ int main(){
     
     if ((isCrescente(arrM,lunghezzaM-1)) || (isDecrescente(arrM,lunghezzaM-1)))
     {
-        for (int  i = 0; i < lunghezzaM; i++)
+        for (int  i = 0,j=lunghezzaM; i < lunghezzaN; i++, j--)
         {          
-            arrN[i+lunghezzaM]=arrM[lunghezzaM-i-1];
+            if (j<=0)
+            {
+                j=lunghezzaM;
+            }
+            arrN[i+lunghezzaM]=arrM[j-1];
+            
         }
     }else{
         for (int  i = 0; i < lunghezzaM; i++)
