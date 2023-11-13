@@ -18,8 +18,8 @@ int main(int nArg, char * arg[]){
         while(!lettura.eof() && !lettura.fail())
         {
 
-            char temp[32];
-            lettura.getline(temp,32); 
+            char temp[50];
+            lettura.getline(temp,50); 
             cout << temp << endl;
             
         }
