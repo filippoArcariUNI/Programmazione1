@@ -15,7 +15,7 @@ int main(int nArg, char * arg[]){
     }else{
         fstream lettura;
         lettura.open(arg[1],ios::in);
-        while (!lettura.eof() && !lettura.fail())
+        while(!lettura.eof() && !lettura.fail())
         {
 
             char temp[32];
