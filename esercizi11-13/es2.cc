@@ -1,16 +1,5 @@
 #include <iostream>
 using namespace std;
-void trasponiMatrice(int ** matrix,int colonne,int ** newMatrix,int righe){
-    for (int i = 0; i < righe; i++)
-    {
-        for (int  j = 0; j < colonne; j++)
-        {
-            newMatrix[i][j]=matrix[j][i];
-        }
-        
-    }
-}
-
 void stampaMatrice(int  ** matrix,int righe ,int colonne){
     for (int i = 0; i < righe; i++)
     {
@@ -22,6 +11,18 @@ void stampaMatrice(int  ** matrix,int righe ,int colonne){
     }
     
 }
+void trasponiMatrice(int ** matrix,int colonne,int ** newMatrix,int righe){
+    for (int i = 0; i < righe-1; i++)
+    {
+        for (int  j = 0; j < righe; j++)
+        {        
+            newMatrix[i][j]=matrix[j][i];
+        }
+        
+    }
+}
+
+
 void RiempiMatrice(int ** matrix,int righe ,int colonne){
     for (int i = 0; i < righe; i++)
     {
@@ -56,8 +57,11 @@ int main(){
     RiempiMatrice(matrix,righe,colonne);
     stampaMatrice(matrix, righe,colonne);
     cout << "======== La matrice Trasposta è ===========" << endl;
+    stampaMatrice(newMatrix,colonne,righe);
+    cout << endl;
     trasponiMatrice(matrix,colonne,newMatrix,righe);
-    stampaMatrice(newMatrix, righe,colonne);
+    stampaMatrice(newMatrix, colonne,righe);
     
-return 0;
+    //deallocare
+    return 0;
 }   
