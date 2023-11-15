@@ -12,11 +12,13 @@ void stampaMatrice(int  ** matrix,int righe ,int colonne){
     
 }
 void trasponiMatrice(int ** matrix,int colonne,int ** newMatrix,int righe){
-    for (int i = 0; i < righe-1; i++)
+    for (int i = 0; i < righe; i++)
     {
-        for (int  j = 0; j < righe; j++)
+        for (int  j = 0; j < colonne ; j++)
         {        
-            newMatrix[i][j]=matrix[j][i];
+            
+            newMatrix[j][i]=matrix[i][j];
+            
         }
         
     }
@@ -57,11 +59,23 @@ int main(){
     RiempiMatrice(matrix,righe,colonne);
     stampaMatrice(matrix, righe,colonne);
     cout << "======== La matrice Trasposta è ===========" << endl;
-    stampaMatrice(newMatrix,colonne,righe);
     cout << endl;
     trasponiMatrice(matrix,colonne,newMatrix,righe);
     stampaMatrice(newMatrix, colonne,righe);
     
-    //deallocare
+    
+    for (int  i = 0; i < righe; i++)
+    {
+        delete [] matrix[i];
+    }
+
+    for (int  i = 0; i < colonne; i++)
+    {
+        delete [] newMatrix[i];
+    }
+
+    delete[] matrix;
+    delete[] newMatrix;
+
     return 0;
 }   
