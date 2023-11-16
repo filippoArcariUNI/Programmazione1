@@ -30,12 +30,11 @@ int main(){
         
         if (i==0)
         {
-            int * x=new node;
-
+            int  * x = new node;
             x->val=newVal;
-            x->next=&node;
+            x->next= 
         }else{
-            int x * =new node;
+            int * x =new node;
             x->val=newVal;
             x->next=nullptr;
             node.next= & x;
@@ -43,5 +42,5 @@ int main(){
         
         
     }
-    
+    return 0;
 }
