@@ -7,7 +7,7 @@ void insert_node(nodo * x, nodo *t) {
     }	
 }
 
-void insert_first(node*&s, int v) {
+void insert_first(node *&s , int v) {
     node * n = new node;
     n->dato = v;
     n->next = s;

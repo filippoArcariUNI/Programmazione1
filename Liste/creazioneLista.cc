@@ -3,14 +3,14 @@ using namespace std;
 struct node
 {
     int val=0;
-    int * next=nullptr;
+    node * next=nullptr;
 };
 
 void printList(node * firstNode){
     while (firstNode->next!=nullptr)
     {
         cout << firstNode->val<< endl;;
-        int * nextNode=firstNode->next;
+        node * nextNode=firstNode->next;
         firstNode->next=nextNode;
     }
     
@@ -22,25 +22,27 @@ int main(){
     int newVal;
     cout<< "Quanti nodi vuoi Avere?"<< endl;
     cin >> nNodi;
+    node * firstNode=new node;
 
     for (int i = 0; i <nNodi; i++)
     {
-        cout << "Inserisci il valore del nodo" << endl;
+        cout << "Inserisci il valore del nodo [" << i+1<<"]" <<endl;
         cin >> newVal;
         
         if (i==0)
         {
-            int  * x = new node;
-            x->val=newVal;
-            x->next= 
+            firstNode->next=nullptr;
+            firstNode->val=newVal;
         }else{
-            int * x =new node;
+            node * x =new node;
             x->val=newVal;
             x->next=nullptr;
-            node.next= & x;
+            firstNode->next=x;
+            firstNode=x;
         }
         
         
     }
+    printList(firstNode);
     return 0;
 }
