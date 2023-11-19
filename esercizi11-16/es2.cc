@@ -48,7 +48,7 @@ int main(int nArg,char * arg[]){
         
         if (db == nullptr)
         {
-            cout << "Errore nell' allocazioe della memoria"<< endl;
+            cout << "Errore nell'allocazioe della memoria"<< endl;
             return 1;
         }
         
