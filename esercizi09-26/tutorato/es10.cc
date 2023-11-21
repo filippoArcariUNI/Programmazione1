@@ -10,8 +10,8 @@ int main(){
     cin >> n;
 
 
-    c+=-'a'+n ;
-    c %=('z'-'a');
+    c+= -'a'+n ;
+    c %= ('z'-'a');
     c+='a'-1;
     cout << "la lettera senza il cifrario di Cesare è:"<< endl;
     cout << c << endl;

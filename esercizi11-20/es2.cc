@@ -71,14 +71,11 @@ void insertInBucket(dataStruct * bucket,int newItem){
     
 }
 void removeFromBucket(dataStruct * bucket,int index){
-    int dimensione=bucket->numData;
-    if (index<dimensione-1)
+    for (int i = index; i < bucket->numData; i++)
     {
-        bucket->data[index]=bucket->data[dimensione];
-        delete bucket->data[index];
+       bucket->data[i]=bucket->data[i+1];
     }
-    
-    
-    
+    bucket->numData=bucket->numData-1;
+    bucket->size=bucket->size-1;
 }
 
