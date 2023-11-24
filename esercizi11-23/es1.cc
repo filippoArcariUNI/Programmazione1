@@ -2,11 +2,6 @@
 #include <fstream>
 #include "listFunc.h"
 using namespace std;
-// struct node
-// {
-//     int val=0;
-//     node * next=nullptr;
-// };
 
 void printList(node * firstNode);
 void printListRec(node * firstNode);
@@ -34,7 +29,9 @@ int main(int nArg,char * arg[]){
     {
         if (root==nullptr)
         {
-            root=createNode(firstNode,tVal);
+            root=firstNode;
+            firstNode->next=nullptr;
+            firstNode->val=tVal;
         }else{
             if (root->next==nullptr)
             {
@@ -55,6 +52,7 @@ int main(int nArg,char * arg[]){
     cout << "========la Lista Invertita è ========" << endl; 
     printReverseList(root);
     cout<< endl;
+
     node * listaPrimo=primalizzaLista(root);
     printList(listaPrimo);
     deallocList(root);

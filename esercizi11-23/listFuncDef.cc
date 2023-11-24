@@ -113,6 +113,7 @@ void printReverseListRec(node * firstNode){
 
 node *  deleteElement(node * selectedNode){
     node * nextNode= selectedNode->next;
+
     delete selectedNode;
     return nextNode;
 }
@@ -120,16 +121,28 @@ node *  deleteElement(node * selectedNode){
 //   r
 
 node * primalizzaLista(node * firstNode){
+    
     node * rootPrime=nullptr;
+    node *temp=nullptr;
     while (firstNode!=nullptr)
     {
         if (checkPrime(firstNode->val))
-        {   
-            rootPrime=deleteElement(firstNode);
+        {  
+            node * x=new node;
             
-        }else{
-            rootPrime=firstNode;
+            if (rootPrime==nullptr)
+            {
+                x->val=firstNode->val;
+                x->next=nullptr;
+                rootPrime=x;
+                temp=x;
+            }else{
+                x=createNode(temp,firstNode->val);
+                temp=x;
+            }
+            
         }
+
         firstNode=firstNode->next;
     }
     return rootPrime;

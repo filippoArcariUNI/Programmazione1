@@ -255,7 +255,7 @@ int main() {
     cout << "Inserting number " << d << endl;
     nodo * t = new nodo;
     t->dato = d; t->next = L1;
-    L1 = t;
+    L1 =t;
   }
   cout << "La lista L1 creata e':" << endl;
   stampa(L1);
