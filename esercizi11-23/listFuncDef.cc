@@ -117,28 +117,35 @@ void printReverseListRec(node * firstNode){
 
 node *  deleteElement(node * selectedNode){
     node * nextNode= selectedNode->next;
+
     delete selectedNode;
     return nextNode;
 }
 
-
-void primalizzaLista(node *& firstNode){
-    node * currentNode=firstNode;
-    node * temp=currentNode;
-    int i=1;
-    while (currentNode!=nullptr)
-    {
-        if (!checkPrime(currentNode->val))
-        {   
-            currentNode=deleteElement(currentNode);
-            temp->next=currentNode;
-
-        }else{
-            temp=currentNode;
-            currentNode=currentNode->next;
-        }
-        i++;
+node * primalizzaLista(node * firstNode){
     
+    node * rootPrime=nullptr;
+    node *temp=nullptr;
+    while (firstNode!=nullptr)
+    {
+        if (checkPrime(firstNode->val))
+        {  
+            node * x=new node;
+            
+            if (rootPrime==nullptr)
+            {
+                x->val=firstNode->val;
+                x->next=nullptr;
+                rootPrime=x;
+                temp=x;
+            }else{
+                x=createNode(temp,firstNode->val);
+                temp=x;
+            }
+            
+        }
+
+        firstNode=firstNode->next;
     }
 
 }

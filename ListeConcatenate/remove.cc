@@ -6,8 +6,8 @@ node * remove_element(node *x) {
         x->next = y->next;
         y->next = NULL; 
     }
-    
-    return y; // ritorna l' indirizzo di memoria al chiamante, in modo che faccia ciò che vuole, manca la DEALLOCAZIONE
+    delete x;
+    return y; // ritorna l' indirizzo di memoria al chiamante, in modo che faccia ciò che vuole
 }
 
 void removeFirstElement(node * & x){
