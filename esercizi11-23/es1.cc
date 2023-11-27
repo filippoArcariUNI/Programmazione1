@@ -8,7 +8,6 @@ using namespace std;
 //     node * next=nullptr;
 // };
 
-void printList(node * firstNode);
 void printListRec(node * firstNode);
 void deallocList(node *& firsNode);
 node * createNode(node * previusNode,int val);
@@ -27,22 +26,23 @@ int main(int nArg,char * arg[]){
         exit(1);
     }
     
-    node * firstNode=new node;
+    
     node * root=nullptr;
+    node * t=nullptr;
     int tVal;
     while (lettura >> tVal)
     {
+        node * x=new node;
+        x->next=nullptr;
+        x->val=tVal;
         if (root==nullptr)
         {
-            root=createNode(firstNode,tVal);
+            root=x;
+            t=x;
+
         }else{
-            if (root->next==nullptr)
-            {
-                firstNode=createNode(root,tVal);
-            }else{
-                
-                firstNode=createNode(firstNode,tVal);
-            }
+            t->next=x;
+            t=x;
         }
     }
     
@@ -55,10 +55,9 @@ int main(int nArg,char * arg[]){
     cout << "========la Lista Invertita è ========" << endl; 
     printReverseList(root);
     cout<< endl;
-    node * listaPrimo=primalizzaLista(root);
-    printList(listaPrimo);
+    primalizzaLista(root); 
+    printList(root);
     deallocList(root);
-    
     return 0;
 }
 
