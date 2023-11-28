@@ -122,33 +122,129 @@ node *  deleteElement(node * selectedNode){
     return nextNode;
 }
 
-node * primalizzaLista(node * firstNode){
+void primalizzaLista(node *& firstNode){
     
-    node * rootPrime=nullptr;
-    node *temp=nullptr;
-    while (firstNode!=nullptr)
+    node * currentNode=firstNode;
+    node * temp=currentNode;
+    while (currentNode!=nullptr)
     {
-        if (checkPrime(firstNode->val))
+        if (!checkPrime(currentNode->val))
         {  
-            node * x=new node;
-            
-            if (rootPrime==nullptr)
-            {
-                x->val=firstNode->val;
-                x->next=nullptr;
-                rootPrime=x;
-                temp=x;
-            }else{
-                x=createNode(temp,firstNode->val);
-                temp=x;
-            }
-            
+            currentNode=deleteElement(currentNode);
+            temp->next=currentNode;
+        }else{
+            temp=currentNode;
+            currentNode=currentNode->next;
         }
 
-        firstNode=firstNode->next;
     }
 
 }
 
-//21 3 343 2
-//   r
+void primalizzaListaRec_helper(node*& firstNode, node* currentNode, node* temp) {
+    if (currentNode == nullptr) {
+        return;
+    }
+
+    if (!checkPrime(currentNode->val)) {
+        currentNode = deleteElement(currentNode);
+
+        if (temp != nullptr) {
+            temp->next = currentNode;
+        } else {
+            firstNode = currentNode;
+        }
+
+        primalizzaListaRec_helper(firstNode, currentNode, temp);
+    } else {
+        primalizzaListaRec_helper(firstNode, currentNode->next, currentNode);
+    }
+}
+
+void primalizzaListaRec(node*& firstNode) {
+    primalizzaListaRec_helper(firstNode, firstNode, nullptr);
+}
+
+node * unisciListe(node * lista1,node* lista2){
+    node * listaUnita=nullptr;
+    node * t;
+    while (lista1!=nullptr)
+    {
+        
+        node * x =new node;
+        x->next=nullptr;
+        x->val=lista1->val;
+        
+        if (listaUnita==nullptr)
+        {
+            listaUnita=x;
+        }else{
+            t->next=x;
+        }
+        t=x;
+        lista1=lista1->next;
+        
+    }
+
+    while (lista2!=nullptr)
+    {
+        
+        node * x =new node;
+        x->next=nullptr;
+        x->val=lista2->val;
+       
+        if (listaUnita==nullptr)
+        {
+            listaUnita=x;
+        }else{
+            t->next=x;
+        }
+        t=x;
+        lista2=lista2->next;
+        
+    }
+    return listaUnita;
+}
+
+node* unisciListeRec_helper(node* lista1, node* lista2, node* listaUnita, node* t) {
+    if (lista1 != nullptr) {
+        node* x = new node;
+        x->next = nullptr;
+        x->val = lista1->val;
+
+        if (listaUnita == nullptr) {
+            listaUnita = x;
+        } else {
+            t->next = x;
+        }
+
+        t = x;
+        lista1 = lista1->next;
+
+        return unisciListeRec_helper(lista1, lista2, listaUnita, t);
+    } else if (lista2 != nullptr) {
+        node* x = new node;
+        x->next = nullptr;
+        x->val = lista2->val;
+
+        if (listaUnita == nullptr) {
+            listaUnita = x;
+        } else {
+            t->next = x;
+        }
+
+        t = x;
+        lista2 = lista2->next;
+
+        return unisciListeRec_helper(lista1, lista2, listaUnita, t);
+    }
+
+    return listaUnita;
+}
+
+node* unisciListeRec(node* lista1, node* lista2) {
+    node* listaUnita = nullptr;
+    node* t = nullptr;
+
+    return unisciListeRec_helper(lista1, lista2, listaUnita, t);
+}

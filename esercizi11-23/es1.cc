@@ -32,24 +32,24 @@ int main(int nArg,char * arg[]){
         x->val=tVal;
         if (root==nullptr)
         {
-            root=createNode(firstNode,tVal);
+            root=x;
+            
         }else{
             t->next=x;
-            t=x;
         }
+        t=x;
     }
-    
-    // cout << endl;
-    // printList(root);
-    // cout << endl;
 
     printListRec(root);
     cout << endl;
     cout << "========la Lista Invertita è ========" << endl; 
     printReverseList(root);
-    cout<< endl;
-    node * listaPrimo=primalizzaLista(root);
-    printList(listaPrimo);
+    cout << "========la Lista Primalizzata è ========" << endl; 
+    primalizzaListaRec(root);
+    printList(root);
+    cout << "========la Lista Unita è ========" << endl; 
+    node * listaUnita=unisciListeRec(root,root);
+    printList(listaUnita);
     deallocList(root);
     return 0;
 }
