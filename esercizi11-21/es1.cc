@@ -45,7 +45,7 @@ int main(int nArg,char * arg[]){
         case 'd':
             cout << "la stringa Originaria è:" << endl;
             cout << str<< endl;
-            crypt(str,key);
+            deCrypt(str,key);
             cout << "la stringa decriptata è:" << endl;
             cout << str<< endl;
         

@@ -3,7 +3,6 @@
 #include "listFunc.h"
 using namespace std;
 
-void printList(node * firstNode);
 void printListRec(node * firstNode);
 void deallocList(node *& firsNode);
 node * createNode(node * previusNode,int val);
@@ -22,41 +21,32 @@ int main(int nArg,char * arg[]){
         exit(1);
     }
     
-    node * firstNode=new node;
+    
     node * root=nullptr;
+    node * t=nullptr;
     int tVal;
     while (lettura >> tVal)
     {
+        node * x=new node;
+        x->next=nullptr;
+        x->val=tVal;
         if (root==nullptr)
         {
-            root=firstNode;
-            firstNode->next=nullptr;
-            firstNode->val=tVal;
+            root=createNode(firstNode,tVal);
         }else{
-            if (root->next==nullptr)
-            {
-                firstNode=createNode(root,tVal);
-            }else{
-                
-                firstNode=createNode(firstNode,tVal);
-            }
+            t->next=x;
         }
+        t=x;
     }
-    
-    // cout << endl;
-    // printList(root);
-    // cout << endl;
 
     printListRec(root);
     cout << endl;
     cout << "========la Lista Invertita è ========" << endl; 
     printReverseList(root);
     cout<< endl;
-
     node * listaPrimo=primalizzaLista(root);
     printList(listaPrimo);
     deallocList(root);
-    
     return 0;
 }
 

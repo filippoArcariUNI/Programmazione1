@@ -43,13 +43,15 @@ void deallocListRec(node *& firstNode){
 
 void printListRec(node * firstNode){
     if(firstNode->next==nullptr){
-        cout << firstNode->val<< endl;
+        cout << firstNode->val<< " ";
+        return;
     }else{
-        cout << firstNode->val<< endl;
+        cout << firstNode->val<< " ";
         node * nextNode=firstNode->next;
         firstNode=nextNode;   
         printListRec(firstNode);
     }
+    
 }
 
 node * createNode(node * previusNode,int val){
@@ -62,13 +64,15 @@ node * createNode(node * previusNode,int val){
 
 
 void printList(node * firstNode){
+    int i=0;
     while (firstNode!=nullptr)
     {
-        cout << firstNode->val<< endl;
-        node * nextNode=firstNode->next;
-        firstNode=nextNode;
+        
+        cout << firstNode->val<< " ";
+        firstNode=firstNode->next;
     }
-    cout << firstNode->val<< endl;    
+    // cout << firstNode->val<< " ";  
+    cout << endl;  
 }
 
 int coutList(node * firstNode){
@@ -121,30 +125,17 @@ node *  deleteElement(node * selectedNode){
 //   r
 
 node * primalizzaLista(node * firstNode){
-    
     node * rootPrime=nullptr;
-    node *temp=nullptr;
     while (firstNode!=nullptr)
     {
         if (checkPrime(firstNode->val))
-        {  
-            node * x=new node;
+        {   
+            rootPrime=deleteElement(firstNode);
             
-            if (rootPrime==nullptr)
-            {
-                x->val=firstNode->val;
-                x->next=nullptr;
-                rootPrime=x;
-                temp=x;
-            }else{
-                x=createNode(temp,firstNode->val);
-                temp=x;
-            }
-            
+        }else{
+            rootPrime=firstNode;
         }
-
         firstNode=firstNode->next;
     }
     return rootPrime;
 }
-

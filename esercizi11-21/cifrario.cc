@@ -8,9 +8,9 @@ void crypt(char * str,int n){
         if (isalpha(str[i]))
         {
             
-        str[i] += - 'a'+n ;
+        str[i] += - 'a' + n ;
         str[i] %= ('z'-'a');
-        str[i] +='a'-1;
+        str[i] +='a';
         
         }
         i++;
@@ -25,9 +25,9 @@ void deCrypt(char * str,int n){
     {
         if (isalpha(str[i]))
         {
-        str[i] += -'a' -n;
+        str[i] -= 'a' ;
         str[i] %= ('z'-'a');
-        str[i] +='a'-1;
+        str[i] +='a'- n;
         
         }
         i++;
