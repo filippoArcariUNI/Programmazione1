@@ -32,7 +32,7 @@ int main(int nArg,char * arg[]){
         x->val=tVal;
         if (root==nullptr)
         {
-            root=createNode(firstNode,tVal);
+            root=createNode(x,tVal);
         }else{
             t->next=x;
         }
@@ -44,8 +44,8 @@ int main(int nArg,char * arg[]){
     cout << "========la Lista Invertita è ========" << endl; 
     printReverseList(root);
     cout<< endl;
-    node * listaPrimo=primalizzaLista(root);
-    printList(listaPrimo);
+    primalizzaLista(root);
+    printList(root);
     deallocList(root);
     return 0;
 }
