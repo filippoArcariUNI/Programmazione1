@@ -1,37 +1,44 @@
 #include <iostream>
-#include "coda.h"
+#include "codaInt.h"
 #include "pila.h"
 using namespace std;
 
 int main(){
-    char c;
+    char c[100];
+    int n;
     cout<< "Inserire un Parola o frase" <<endl;
-    init();
+    coda_init();
     pila_init();
+    cin >> c;
 
-    for (int  i = 0; i < 100; i++)
+    for (int i=0; c[i] != '\0'; i++)
     {
-        cin>> c;
-        pila_push(c);
-        enqueue(c);
+        n= (int) c[i];
+        pila_push(n);
+        coda_enqueue(n);
     }
     bool isPalindorma=true;
     for (int i = 0; i < 100; i++)
     {
-        int t,s;
-        pila_top(t);
-        first(s);
+        int coda;
+        int pila;
 
-        if (t!=s)
+        pila_top(pila);
+        coda_first(coda);
+
+        if (pila!=coda)
         {
-            cout << "la Parola non è palindorma" << endl;
+            isPalindorma=false;
             break;
-        }
-        
-        
+        } 
     }
-    
-    
+    if (isPalindorma)
+    {
+        cout << "La strigna è palindroma"<< endl;
+    }else{
+        cout << "La strigna NON è palindroma"<< endl;
+
+    }
     
     return 0;
 }

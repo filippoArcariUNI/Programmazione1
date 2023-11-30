@@ -1,6 +1,5 @@
 #include <iostream>
 #include "pila.h"
- 
 using namespace std;
  
 static listaPila pila;
