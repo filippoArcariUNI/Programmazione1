@@ -31,8 +31,9 @@ int main(int nArg,char * arg[]){
     printOrdered(padre);
     cout << endl ;
     cout <<"Ricerca un valore :";
-    cin >> n;
-    cout << treeSearch(padre,n)<< endl;
+    cin >> cercato;
+    cout << treeSearch(padre,cercato)->value << endl;
+    deallocTree(padre);
 
-    
+    return 0;
 }

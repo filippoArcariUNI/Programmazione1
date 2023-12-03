@@ -58,20 +58,36 @@ void printOrdered(albero tree){
     }
 }
 
-albero treeSearch(albero  tree,int value){
+albero treeSearch(albero tree,int value){
     if (tree)
     {
-        if ((tree!=nullptr) && (tree->value > value) )
+        if (tree->value==value)
         {
-            treeSearch(tree->sxChild,value);
-            cout << "Sinistra, ";
+            return tree;
+        }else if ((tree->value < value) )
+        {
+            cout << " Sinistra -> ";
+            treeSearch(tree->dxChild,value);
         }else{
+            cout << " Destra-> ";
             treeSearch(tree->sxChild,value);
-            cout << "Destra, ";
         }
         
+        
+        
     }else if (tree->value==value){
-        return albero;
+        return  tree;
+    }else{
+        return nullptr;
     }
     
+}
+
+void deallocTree(albero tree){
+    if (tree)
+    {
+        deallocTree(tree->sxChild);
+        deallocTree(tree->dxChild);     
+        delete tree; 
+    }
 }

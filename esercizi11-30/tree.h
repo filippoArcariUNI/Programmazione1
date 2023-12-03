@@ -11,7 +11,8 @@ struct node
 
 
 void printTree(albero radice);
-albero treeSearch(albero * tree,int value);
+albero treeSearch(albero tree,int value);
 void treeInit(albero &  tree);
 albero addElement(albero & tree, int value);
 void printOrdered(albero  tree);
+void deallocTree(albero tree);
