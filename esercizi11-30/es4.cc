@@ -10,7 +10,7 @@ int main(int nArg, char ** arg){
     }
     fstream lettura,scrittura;
     lettura.open(arg[1],ios::in);
-    scrittura.open(ios::out);
+    scrittura.open("output.txt",ios::out);
     if (lettura.fail())
     {
         cout << " Errore nella lettura del file "<< endl;
@@ -24,21 +24,24 @@ int main(int nArg, char ** arg){
     
     char c;
     bool nextUpper=true;
-    lettura >> noskipws;
     while (lettura.get(c))
     {
-        if (nextUpper)
-        {
-            c += 'Z' - 'a';    
-        }
-
-        scrittura << c;
         if (c=='.'|| c=='!' || c=='?')
         {
             nextUpper=true;
         }
-        
+        if (c>='a' && c<='z')
+        {
+            if (nextUpper)
+            {
+                c -= 'a' - 'A';    
+                nextUpper=false;
+            }
+        }
+        cout << c <<" "<< nextUpper;
+        scrittura << c;
     }
+    cout << endl;
         
 
     return 0;
