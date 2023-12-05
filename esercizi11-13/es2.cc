@@ -11,6 +11,7 @@ void stampaMatrice(int  ** matrix,int righe ,int colonne){
     }
     
 }
+
 void trasponiMatrice(int ** matrix,int colonne,int ** newMatrix,int righe){
     for (int i = 0; i < righe; i++)
     {
