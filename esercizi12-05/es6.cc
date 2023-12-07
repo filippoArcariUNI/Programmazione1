@@ -21,12 +21,15 @@ bool inPattern(int * testo,int * pattern, int dimTesto,int dimPattern){
     int j=0;
     for (int i = 0; i < dimTesto; i++)
     {
-        if (testo[i]==pattern[i])
+        
+        if (testo[i]==pattern[j])
         {
             j++;
+
         }else{
             j=0;
         }
+        
         if (dimPattern==j)
         {
             return true;
@@ -37,11 +40,11 @@ bool inPattern(int * testo,int * pattern, int dimTesto,int dimPattern){
 }
 
 int main(){
-    const int dimPattern=3;
-    const int dimTesto=30;
+    const int dimPattern=2;
+    const int dimTesto=10;
     int testo[dimTesto];
     int pattern[dimPattern];
-
+    srand(time(NULL));
     riempiArray(testo,dimTesto);
     riempiArray(pattern,dimPattern);
 
@@ -50,10 +53,6 @@ int main(){
     stampaArray(pattern,dimPattern);
     cout << endl;
 
-    cout << "inPattern: " << inPattern(testo,pattern,dimPattern,dimTesto) << endl;
-    
-
-    
-
+    cout << "inPattern: " << inPattern(testo,pattern,dimTesto,dimPattern) << endl;
 
 }
