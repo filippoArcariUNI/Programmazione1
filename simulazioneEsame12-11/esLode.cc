@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-
+using namespace std;
 // NON MODIFICARE IL CODICE SOTTO FINO A "NON MODIFICARE IL CODICE SOPRA"
 #define MAXVALUE 100
 #define MAXSIZE 10
@@ -33,11 +33,37 @@ list * create_list(int n) {
   else return new list { rand()%MAXVALUE, create_list(n-1)};
 }
 // NON MODIFICARE IL CODICE SOPRA
+int somma(list * l, int t){
+    if (l->next==nullptr)
+    {
+        return t;
+    }else{
+        t+=l->info;
+        somma(l->next,t);
+    }
+    
+}
+int getLast(list *l){
+    if (l->next==nullptr)
+    {
+      
+      return l->info;
+    }else{
+      getLast(l->next);
+    }
+    
+}
 
 // Inserire qui sotto la definizione della funzione f
-bool isZero(list * l){
+bool f(list * l){
     int last=getLast(l);
     int totale=somma(l,0);
+    // cout << last << " \t" << totale;
+    if (l==nullptr)
+    {
+      return false;
+    }
+    
     if (l->next==nullptr)
     {
         return true;
@@ -45,38 +71,19 @@ bool isZero(list * l){
     
     if ((totale-last)==0)
     {
-        return true;
+      return true;
     }else{
-        return false;
-        
+      return false;   
     }
     
 }
-int somma(list l, int t){
-    if (l==nullptr)
-    {
-        return t;
-    }else{
-        t+=l.info;
-        somma(l.next,t);
-    }
-    
-}
-int getLast(list *l){
-    if (l==nullptr)
-    {
-        return l->info;
-    }else{
-        getLast(l->next);
-    }
-    
-}
+
 // Inserire qui sopra la definizione della funzione f
 
 
 int main(int argc, char ** argv) {
   // NON MODIFICARE IL MAIN
-  srand(unsigned(time(0)));
+  // srand(unsigned(time(0)));
 		//
 		// Commentare la linea seguente per avere comportamento
 		// non-deterministico
