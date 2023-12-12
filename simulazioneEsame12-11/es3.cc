@@ -112,7 +112,7 @@ list * estrai(list *dipendenti,list * entrate, list * uscite){
       firstUscite=firstUscite->next;
     }
 
-    cout << entrateCounter << " entrate    "<< usciteCounter << " uscite "<< dipendenti->code<< endl;
+    // cout << entrateCounter << " entrate    "<< usciteCounter << " uscite "<< dipendenti->code<< endl;
     
     if (entrateCounter==usciteCounter)
     {
