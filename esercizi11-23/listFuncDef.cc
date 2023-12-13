@@ -71,7 +71,7 @@ void printList(node * firstNode){
         cout << firstNode->val<< " ";
         firstNode=firstNode->next;
     }
-    // cout << firstNode->val<< " ";  
+    
     cout << endl;  
 }
 

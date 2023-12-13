@@ -1,0 +1,9 @@
+C++ feels like a new language. :  30
+That is, I can express my ideas more clearly, :  45
+more simply, and more directly in C++11 :  39
+than I could in C++98. Furthermore, the resulting :  49
+programs are better checked by the compiler :  43
+and run faster. :  15
+Bjarne Stroustrup, The C++ Programming Language (4th Edition) :  61
+
+la Riga più lunga è :Bjarne Stroustrup, The C++ Programming Language (4th Edition)	 lunga :61 caratteri 
