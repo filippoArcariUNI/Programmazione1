@@ -90,10 +90,9 @@ list * estraiRec(list *l1 ,  list * l2, list *& l3){
     }else{
         list * x=new list;
         int occurence=conta(l2,l1->code);
-       
         if (l3==nullptr)
         {
-          if ((l2->code%2)==0)
+          if ((l1->code%2)==0)
           {
             x->code=occurence;
             x->next=nullptr;
@@ -106,7 +105,7 @@ list * estraiRec(list *l1 ,  list * l2, list *& l3){
             estraiRec(l1->next,l2,l3);
           }
         }else{
-          if ((l2->code%2)==0)
+          if ((l1->code%2)==0)
           {
             x->code=occurence;
             x->next=nullptr;
@@ -121,17 +120,16 @@ list * estraiRec(list *l1 ,  list * l2, list *& l3){
           
          
         }
-        cout << l1<< endl;
-        print_list(l3, "Lista L3:");
-        //  cout << x <<  "->" << x->code << endl;
+        
   }
     
 }
 list * estrai(list *l1,list * l2){
    if (l1!=nullptr && l2!=nullptr)
    {
-        list *l3= nullptr;
-        list * res=estraiRec(l1,l2,l3);
+        list * res=nullptr;
+        estraiRec(l1,l2,res);
+      // print_list(res, "Lista L3:");
        return res;
    }
     
