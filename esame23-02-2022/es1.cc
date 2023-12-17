@@ -14,6 +14,22 @@ char ** creaMatriceDinamica(int righe,int colonne){
     }
     return matrice;  
 }
+void stampaArray(const char arr[],int dimensione){
+
+    for (int i = 0; i < dimensione; i++)
+    {
+        cout << arr[i] << "  ";
+    }
+
+}
+void stampaArray(const int arr[],int dimensione){
+
+    for (int i = 0; i < dimensione; i++)
+    {
+        cout << arr[i] << "  ";
+    }
+
+}
 void deallocMatrix(int ** matrix, int rows){
     for (int i = 0; i < rows; ++i)
     delete [] matrix[i];
@@ -42,32 +58,56 @@ int main(int nArg,char * arg[]){
     char ** parole=creaMatriceDinamica(MAXNUMERI,MAXLENGHT);
     char buffer[MAXLENGHT];
     int i=0;
-    strcpy(parole[i],NULL);
-    // cout << parole<< endl;
     while(input >> buffer)
     {
-        strcpy(parole[i],buffer);  
-    
+        bool valida=true;
+        int dimBuffer=strlen(buffer);
+        for (int  j = 0; j < dimBuffer && valida; j++)
+        {
+            if (buffer[j]>'z' || buffer[j]<'a')
+            {
+                valida=false;
+            }
+            
+        }
+        
+        if (valida)
+        {
+            strcpy(parole[i],buffer);
+            numeri[i]=1;
+        }else{
+            i--;
+        }
+        
         bool isPresente=false;
-        for (int j = 0; j <= i; j++)
+        for (int j = 0; j < i && !isPresente; j++)
         {
             if (!strcmp(parole[j],buffer))
             {
                 isPresente=true;
+                cout << parole[j]<< " " << buffer<< endl;
             }
             
         }
-        cout << isPresente << endl;
+        
+        if (isPresente && valida)
+        {
+            int index=findIndex(parole,buffer);
+            // cout<< index<< " " << buffer ;cout.flush();
+            if (index!=-1)
+            {
+                numeri[index]+=1; 
+                // cout << numeri[index]<< endl;
+            }    
+        }
         if (isPresente)
         {
-            strcpy(parole[i],buffer);   
-        }else{
-            int index=findIndex(parole,buffer);
-            numeri[index]+=1;
+            i--;
         }
+        
+   
         i++;
     }
-    
 
     for (int  j = 0; j < i; j++)
     {
@@ -84,11 +124,14 @@ int main(int nArg,char * arg[]){
 
 
 int findIndex(char  **parole,char * buffer){
-    for (int i = 0; i < strlen(*parole); i++)
+    int numParole=strlen(*parole);
+    for (int i = 0; i < numParole; i++)
     {
         if(!strcmp(parole[i],buffer)){
+            // cout <<  parole[i]<<" " << buffer;
             return i;
         }
     }
+    
     return -1;
 }

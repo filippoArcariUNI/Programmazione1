@@ -14,7 +14,7 @@ typedef struct _list {
 // Add hereafter the declaration of estrai
 list * estraiRec(list *l1 ,  list * l2, list *& l3);
 list * estrai(list *l1,list * l2);
-int conta(list * t, int );
+int contaOccorrenze(list * t, int );
 // Add here above the declaration of estrai
 
 list * crea_lista(int num) {
@@ -89,7 +89,7 @@ list * estraiRec(list *l1 ,  list * l2, list *& l3){
        return l3;
     }else{
         list * x=new list;
-        int occurence=conta(l2,l1->code);
+        int occurence=contaOccorrenze(l2,l1->code);
         if (l3==nullptr)
         {
           if ((l1->code%2)==0)
@@ -135,29 +135,17 @@ list * estrai(list *l1,list * l2){
     
 }
 
-int conta(list  * t, int value){
-    // if (!t)
-    // {
-    //   return t;
-    // }else{
-    //   if ((t->code%2)==0)
-    //   {
-    //     t++;
-    //   } 
-    //   return conta(t->next,value,t)
-    // }
-    
-    
+int contaOccorrenze(list  * t, int value){  
     if (t==nullptr)
     {   
         return 0;
     }else{
         if (t->code==value)
         {
-          int temp=  1+conta(t->next,value);
+          int temp=  1+contaOccorrenze(t->next,value);
           return temp;
         } else{
-          return  conta(t->next,value);
+          return  contaOccorrenze(t->next,value);
         }
         
     }
