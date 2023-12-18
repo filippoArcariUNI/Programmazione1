@@ -91,3 +91,32 @@ void deallocTree(albero tree){
         delete tree; 
     }
 }
+
+tree* creaNodo(int data) {
+    tree* temp = new tree;
+    temp->value = data;
+    temp->left = nullptr;
+    temp->right = nullptr;
+    return temp;
+}
+
+void insert_iter(tree*& result, const int num) {
+    tree* newtree = creaNodo(num);
+    tree* x = result;
+    tree* y = nullptr;
+
+    while (x != nullptr) {
+        y = x;
+        if (num < x->value)
+            x = x->left;
+        else
+            x = x->right;
+    }
+
+    if (y == nullptr)
+        result = newtree;
+    else if (num < y->value)
+        y->left = newtree;
+    else
+        y->right = newtree;
+}
