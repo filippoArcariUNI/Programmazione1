@@ -52,8 +52,9 @@ int main(int argc, char ** argv) {
 // ---------------------------------------------------------------
 // Inserire qui sotto la definizione della funzione compute_List
 void compute_List(List *l1, List*& l2,List *& l3){
-
-    if (l1!=nullptr && l2!= nullptr && l3!= nullptr)
+	l2=nullptr;
+	l3=nullptr;
+    if (l1!=nullptr)
    {
         compute_List_Aux(l1,l2,l3);   
    }
@@ -68,11 +69,11 @@ int conta(List  * t){
     }
     
 }
-void insert(List *&l, List *node, int value) {
+// Inserimento in lista
+void insert(List *& l, List *node, int value) {
     if (node != nullptr) {
         node->info = value;
         node->next = nullptr;
-
         if (l == nullptr) {
             l = node; 
         } else {
@@ -89,25 +90,31 @@ void insert(List *&l, List *node, int value) {
 
 void compute_List_Aux(List *l1, List*& l2,List *& l3){
 	List * x=new List;
-    if (l1->next==nullptr)
+    if (l1==nullptr)
     {
+		List * y=new List;
+
 		int lenghtL2=conta(l2);
         int lenghtL3=conta(l3);
+
 		insert(l2,x,lenghtL2);
-		insert(l3,x,lenghtL3);
-       return;
+		insert(l3,y,lenghtL3);
+	
+		
+		return;
+	
     }else{
         
         if ((l1->info%2)==0 && !(l1->info%3)==0)
         {
+			
             insert(l2,x,l1->info);
-			cout.flush();
-			compute_List_Aux(l1->next,l2->next,l3);
+			compute_List_Aux(l1->next,l2,l3);
         }else if ((l1->info%3)==0)
 		{
-			cout << "ok" ;
             insert(l3,x,l1->info);
-			compute_List_Aux(l1->next,l2,l3->next);
+		
+			compute_List_Aux(l1->next,l2,l3);
 		}else{
 			compute_List_Aux(l1->next,l2,l3);
 		}     
