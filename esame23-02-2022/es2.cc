@@ -68,16 +68,23 @@ int conta(List  * t){
     }
     
 }
-void insert(List *& l, List * node, int value){
-	node->info=value;
-	node->next=nullptr;
-    if (l==nullptr)
-    { 
-		l=node;
-    }else{
-		l->next=node;
-	}
-	stampa_List(l,"prova");
+void insert(List *&l, List *node, int value) {
+    if (node != nullptr) {
+        node->info = value;
+        node->next = nullptr;
+
+        if (l == nullptr) {
+            l = node; 
+        } else {
+            if (l->next == nullptr) {
+                l->next = node;
+            } else {
+                insert(l->next, node, value);
+            }
+        }
+    } else {
+        cout << "Errore, nodo non allocato" << endl;
+    }
 }
 
 void compute_List_Aux(List *l1, List*& l2,List *& l3){
@@ -93,21 +100,18 @@ void compute_List_Aux(List *l1, List*& l2,List *& l3){
         
         if ((l1->info%2)==0 && !(l1->info%3)==0)
         {
-			
             insert(l2,x,l1->info);
 			cout.flush();
-			compute_List_Aux(l1->next,l2,l3);
+			compute_List_Aux(l1->next,l2->next,l3);
         }else if ((l1->info%3)==0)
 		{
+			cout << "ok" ;
             insert(l3,x,l1->info);
-			compute_List_Aux(l1->next,l2,l3);
+			compute_List_Aux(l1->next,l2,l3->next);
 		}else{
 			compute_List_Aux(l1->next,l2,l3);
-		}
-           
+		}     
   }
-    
-
 }
 // Inserire qui sopra la definizione della funzione compute_List
 // ---------------------------------------------------------------
