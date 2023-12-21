@@ -55,8 +55,6 @@ int contaOccorrenza(char ** matrix, char * cercata,int righe){
         int k=0;
         for (int  j = 0; j < dimColonna; j++)
         {
-            cout << matrix[i][j]<<cercata[k]<<  endl;
-            
             if (matrix[i][j]==cercata[k])
             {
                 k++;
@@ -113,8 +111,6 @@ int main(int nArg,char * arg[]){
     cout << cercata<< endl;
 
     char * temp=circularShift(cercata,shift);
-    cout << temp<< " <--shift "<<endl;
-
     int occorrenza = contaOccorrenza(matrice,temp,nStringhe);
     cout << occorrenza<< endl;
     
