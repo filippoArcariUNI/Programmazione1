@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+using namespace std;
 
 typedef struct _list list;
 #define MAXCODE 100
@@ -48,12 +49,12 @@ void print_list(list * l, const char * prefix) {
 
 // Inserire qui sotto la dichiarazione della funzione estrai
 // FILL HERE
-
+list *  estrai(list *  dipendenti,list * entrate,list  * uscite);
 // Inserire qui sopra la dichiarazione della funzione estrai
 
 // Inserire qui sotto la dichiarazione della funzione delete_list
 // FILL HERE
-
+void delete_list(list *  estratti);
 // Inserire qui sopra la dichiarazione della funzione delete_list
 
 int main() {
@@ -80,11 +81,64 @@ int main() {
 
 // Inserire qui sotto la definizione della funzione estrai
 // FILL HERE
+int numOccorrenze(list * lista,int n){
+  int count=0;
+  while (lista!=nullptr)
+  {
+    if (lista->code==n)
+    {
+      count++;
+    }
+    lista=lista->next;
+  }
+  return count;
+}
+void insert(list *& l,list *node, int value) {
+    if (node != nullptr) {
+        node->code = value;
+        node->next = nullptr;
 
+        if (l == nullptr) {
+            l = node; 
+        } else {
+            list *temp = l;
+            while (temp->next != nullptr) {
+                temp = temp->next;
+            }
+            temp->next = node; 
+        }
+    } else {
+        cout << "Error" << endl;
+    }
+}
+list * estrai(list * dipendenti,list  *entrate,list  * uscite){
+  list * rootEstratti=nullptr;
+  while (dipendenti!=nullptr)
+  {
+    int nEntrate=numOccorrenze(entrate,dipendenti->code);
+    int nUscite=numOccorrenze(uscite,dipendenti->code);
+    
+    
+    if (nEntrate==nUscite)
+    {
+      list * x= new list;
+      insert(rootEstratti,x,dipendenti->code);
+    }
+    dipendenti=dipendenti->next;
+  }
+  return rootEstratti;
+}
 // Inserire qui sopra la definizione della funzione estrai
 
 
 // Inserire qui sotto la definizione della funzione delete_list
 // FILL HERE
-
+void delete_list(list * s){
+    if (s!=nullptr)
+    {
+        delete_list(s->next);
+        delete s;
+    }
+}
+  
 // Inserire qui sopra la definizione della funzione delete_list
