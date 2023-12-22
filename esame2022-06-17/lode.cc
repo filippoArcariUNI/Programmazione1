@@ -2,7 +2,7 @@
 
 #define MAXVALUE 100
 #define MAXSIZE 100
-
+using namespace std;
 typedef struct tree {
   int data;
   struct tree * left;
@@ -49,7 +49,7 @@ void delete_tree(tree * & root) {
 }
 
 // Add hereafter the declaration of remove_element
-tree * remove_element(tree root , int value);
+tree * remove_element(tree *  root , int value);
 // Add here above the declaration of remove_element
 
 int main() {
@@ -90,8 +90,63 @@ int main() {
 
 
 // Add hereafter the definition of compute_sum
-tree * remove_element(tree root , int value){
-    int temp[MAXSIZE]
+void addArray(tree * albero, int arr[], int i){
+    if (albero!=nullptr)
+    {
+		cout << albero->data<< " " << i;
+        arr[i]=albero->data;
+        addArray(albero->left,arr,i+1);
+        addArray(albero->right,arr,i+1);     
+    }
+	
+}
+tree * addElement(tree *& albero, int value){
+
+    if (albero==nullptr)
+    {
+        tree * albero=new tree;
+        albero->data=value;
+        albero->right=nullptr;
+        albero->left=nullptr;    
+    }else{
+       if (albero->data > value)
+        {
+        albero->left= addElement(albero->left,value);
+        }else{
+        albero->right= addElement(albero->right,value);
+    	} 
+    }
+    
+    return albero;
+}
+void stampaArray(const int arr[],int dimensione){
+
+    for (int i = 0; i < dimensione; i++)
+    {
+        cout << arr[i] << "  ";
+    }
+
+}
+tree * remove_element(tree  * root , int value){
+	tree * rootNewTree=nullptr;
+    int temp[MAXSIZE]={-1};
+	addArray(root,temp,0);
+	stampaArray(temp,MAXSIZE);
+	bool isPresente=false;
+	for (int i = 0; i < MAXSIZE && !isPresente; i++)
+	{
+		if (temp[i]==value)
+		{
+			isPresente=true;
+		}
+	}
+	for (int  i = 0; i < MAXSIZE; i++)
+	{
+		addElement(rootNewTree,temp[i]);
+	}
+	print_tree(rootNewTree);
+	std::cout << std::endl;
+	return rootNewTree;
 }
 
 // Add here above the definition of compute_sum
