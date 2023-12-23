@@ -76,7 +76,7 @@ int main() {
   key = rand()%MAXVALUE;
 		std::cout << "removing: " << key << std::endl;
 		root = remove_element(root, key);
-  key = rand()%MAXVALUE;
+  		key = rand()%MAXVALUE;
 		std::cout << "removing: " << key << std::endl;
 		root = remove_element(root, key);
 		std::cout << "removing: " << key << std::endl;
@@ -84,22 +84,45 @@ int main() {
 		std::cout << "Final tree: " << std::endl;
 		print_tree(root);
 		std::cout << std::endl;
-  delete_tree(root);
+  		delete_tree(root);
 		return 0;
 }
 
 
 // Add hereafter the definition of compute_sum
-void addArray(tree * albero, int arr[], int i){
-    if (albero!=nullptr)
-    {
-		cout << albero->data<< " " << i;
-        arr[i]=albero->data;
-        addArray(albero->left,arr,i+1);
-        addArray(albero->right,arr,i+1);     
+
+
+void addTreeToArray(tree* albero, int* arr, int & index) {
+    if (albero != nullptr) {
+       
+        arr[index++] = albero->data;
+        addTreeToArray(albero->left, arr, index);
+        addTreeToArray(albero->right, arr, index);
     }
-	
 }
+void bubbleSort(int arr[], int n) 
+{ 
+    int i, j; 
+    for (i = 0; i < n - 1; i++){
+        for (j = 0; j < n - i - 1; j++) 
+            if (arr[j] < arr[j + 1]){
+                int t=arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j]=t; 
+            }
+    }
+} 
+
+
+void stampaArray(const int arr[],int dimensione){
+
+    for (int i = 0; i < dimensione; i++)
+    {
+        cout << arr[i] << "  ";
+    }
+
+}
+
 tree * addElement(tree *& albero, int value){
 
     if (albero==nullptr)
@@ -111,41 +134,49 @@ tree * addElement(tree *& albero, int value){
     }else{
        if (albero->data > value)
         {
-        albero->left= addElement(albero->left,value);
+        albero->left=addElement(albero->left,value);
         }else{
-        albero->right= addElement(albero->right,value);
+        albero->right=addElement(albero->right,value);
     	} 
     }
-    
     return albero;
 }
-void stampaArray(const int arr[],int dimensione){
 
-    for (int i = 0; i < dimensione; i++)
-    {
-        cout << arr[i] << "  ";
-    }
-
-}
 tree * remove_element(tree  * root , int value){
 	tree * rootNewTree=nullptr;
-    int temp[MAXSIZE]={-1};
-	addArray(root,temp,0);
-	stampaArray(temp,MAXSIZE);
+    int temp[MAXSIZE]={0};
+	int i=0;
+	addTreeToArray(root,temp,i);
+	bubbleSort(temp,MAXSIZE);
+	
 	bool isPresente=false;
+	int valueIndex;
+
 	for (int i = 0; i < MAXSIZE && !isPresente; i++)
 	{
 		if (temp[i]==value)
 		{
 			isPresente=true;
+			valueIndex=i;
 		}
 	}
-	for (int  i = 0; i < MAXSIZE; i++)
+	
+
+	if (isPresente)
+	{
+		temp[valueIndex]=0;
+	}
+
+	bubbleSort(temp,MAXSIZE);
+	
+	
+	// stampaArray(temp,MAXSIZE);
+	for (int  i = 0; temp[i]!=0; i++)
 	{
 		addElement(rootNewTree,temp[i]);
 	}
+	cout <<rootNewTree <<endl;
 	print_tree(rootNewTree);
-	std::cout << std::endl;
 	return rootNewTree;
 }
 
