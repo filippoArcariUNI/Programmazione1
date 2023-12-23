@@ -1,4 +1,4 @@
-void insert(List *&l, List *node, int value) {
+void insert(list *&l,list *node, int value) {
     if (node != nullptr) {
         node->info = value;
         node->next = nullptr;
@@ -34,4 +34,20 @@ void insertRec(List *&l, List *node, int value) {
     } else {
         cout << "Error" << endl;
     }
+}
+
+int listOccurence(list * l,int value){
+    if (l==nullptr)
+    {
+        return 0;
+    }else{
+        if (l->code==value)
+        {
+            return 1+listOccurence(l->next,value);
+        }else{
+            return listOccurence(l->next,value);
+        }
+        
+    }
+    
 }
