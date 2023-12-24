@@ -1,55 +1,62 @@
 #include <iostream>
-#include "pila.h"
+#include "pila_1.h"
 
 using namespace std;
 static int index1;
 static int index2;
 int dimensione;
+
 int * pila;
 
 void init(int dim){
     index1=0;
     index2=dim-1;
     dimensione=dim;
+
     pila=new int[dim];
 }
-bool pushP1(float n){
-    if ()
-    {
-        pila[index1]=n
+bool pushP1(int  n){
+    if ((dimensione-index1-index2-2)<=0)
+    { 
+        cout << dimensione<< endl;
+        cout << index1 << endl;
+        pila[index1]=n;
         index1++;
         return true;
     }else{
         return false;
     }
 }
-bool pushP2(float n){
-    if (index1<index2)
+bool pushP2(int  n){
+    if ((dimensione-index1-index2-2)<=0)
     {
-        pila[index2]=n
-        index1--;
+        pila[index2]=n;
+        index2--;
+        
         return true;
     }else{
         return false;
     }
 }
 
-bool topP1(float & n){
+bool topP1(int  & n){
     if (index1>=0)
     {
-       n=pila[index1];
-       return true,
+        
+       n=pila[index1-1];
+       return true;
     }else{
         return false;
     }
     
 }
 
-bool topP2(float & n){
+bool topP2(int  & n){
     if (index2<dimensione)
     {
-       n=pila[index2];
-       return true,
+        cout << index2<< endl;
+       n=pila[index2+1];
+       return true;
     }else{
         return false;
     }
@@ -57,10 +64,11 @@ bool topP2(float & n){
 }
 
 bool popP1(){
-    if (index1>=0)
+    if (index1>=0 && index1<index2)
     {
        pila[index1]=0;
-       return true,
+       index1--;
+       return true;
     }else{
         return false;
     }
@@ -69,10 +77,11 @@ bool popP1(){
 
 
 bool popP2(){
-    if (index2<dimensione)
+    if (index2<dimensione && index2>index1)
     {
        pila[index2]=0;
-       return true,
+       index2++;
+       return true;
     }else{
         return false;
     }
@@ -84,15 +93,31 @@ void deinit(){
 }
 
 void print(){
-    cout << "pila 1:";
-    for (int i = 0; i <= index1; i++)
+    cout << "pila 1: ";
+    for (int i = 0; i < index1; i++)
     {
-        cout << pila[i] << " ";
+        if (index1==0)
+        {
+            cout <<" Pila Vuota"<< endl;
+        }else{
+            cout << pila[i] << " ";
+
+        }
+
+        
     }
-     cout << "pila 2:";
-    for (int i = index2; i < dimensione; i++)
+     cout << "\npila 2: ";
+    for (int i = dimensione-1; i>index2; i--)
     {
-        cout << pila[i] << " ";
+        if (index2==dimensione-1)
+        {
+            cout << " Pila Vuota" << endl;
+        }else{
+            cout << pila[i] << " ";
+
+        }
+        
     }
+    cout << endl;
     
 }

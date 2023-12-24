@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 
-    init(15);
+    init(3);
 
     cout << "inserisci: " << endl;
     cout << "- 'push1' per aggiungere un valore a P1" << endl;
