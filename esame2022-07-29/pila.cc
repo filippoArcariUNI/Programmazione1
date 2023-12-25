@@ -16,10 +16,8 @@ void init(int dim){
     pila=new int[dim];
 }
 bool pushP1(int  n){
-    if ((dimensione-index1-index2-2)<=0)
+    if (index1<=index2)
     { 
-        cout << dimensione<< endl;
-        cout << index1 << endl;
         pila[index1]=n;
         index1++;
         return true;
@@ -28,7 +26,7 @@ bool pushP1(int  n){
     }
 }
 bool pushP2(int  n){
-    if ((dimensione-index1-index2-2)<=0)
+    if (index1<=index2)
     {
         pila[index2]=n;
         index2--;
@@ -64,10 +62,12 @@ bool topP2(int  & n){
 }
 
 bool popP1(){
-    if (index1>=0 && index1<index2)
+    cout << index1<< endl;
+    cout << pila[index1-1]<< endl;
+    if (index1>0)
     {
-       pila[index1]=0;
        index1--;
+       pila[index1]=0;
        return true;
     }else{
         return false;
@@ -77,10 +77,14 @@ bool popP1(){
 
 
 bool popP2(){
-    if (index2<dimensione && index2>index1)
+    cout<< index2<< endl;
+    cout << pila[index2+1]<< endl;
+
+    if (index2<dimensione-1)
     {
-       pila[index2]=0;
+       
        index2++;
+       pila[index2]=0;
        return true;
     }else{
         return false;
