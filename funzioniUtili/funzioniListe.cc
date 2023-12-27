@@ -28,7 +28,7 @@ void insertRec(List *&l, List *node, int value) {
             if (l->next == nullptr) {
                 l->next = node;
             } else {
-                insert(l->next, node, value);
+                insertRec(l->next, node, value);
             }
         }
     } else {

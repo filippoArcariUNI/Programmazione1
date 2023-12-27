@@ -5,6 +5,7 @@
 using namespace std;
 
 int cript(char str[]);
+void decript(int cripted);
 
 int main(int nArg,char * arg[]){
      if (nArg != 3)
@@ -32,9 +33,11 @@ int main(int nArg,char * arg[]){
     while (in>> str)
     {
         str[4]='\0';
-        cout << str<< endl;
         int base36=cript(str);
-        cout << base36<< endl;
+        base36+=key;
+        
+        decript(base36);
+        cout<< endl;
 
     }
     
@@ -68,10 +71,36 @@ int cript(char str[]){
 
         }else if (str[i]>='a' && str[i]<='z')
         {
-            temp36+= ( str[i]-'A'+10 )*  pow(base,(dim-1)-i);
-            cout<<( str[i]-'A'+10 )*  pow(base,(dim-1)-i)<< endl;
+            temp36+= ( str[i]-'a'+10 )*  pow(base,(dim-1)-i);
         }
-        cout << temp36<< endl;
     }
     return temp36;
+}
+
+void decript(int cripted){
+    const int base=36;
+    char strDecripted[10];
+    int i=0;
+    while (cripted!=0)
+    {
+        int first=0;
+        first=cripted%base;
+        if (first>=0 && first<=9)
+        {
+            strDecripted[i]=first;
+        }else if (first>=10 && first<=36)
+        {
+            char c=first+'a'-10;
+            strDecripted[i]=c;
+        }
+        cripted-=first;
+        cripted/=base;
+        i++;
+    }
+    
+    for (int j=i-1; j>=0 ; j--)
+    {
+        cout << strDecripted[j];
+    }
+    cout<< " ";
 }
