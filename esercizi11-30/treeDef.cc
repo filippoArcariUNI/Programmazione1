@@ -120,3 +120,33 @@ void insert_iter(tree*& result, const int num) {
     else
         y->right = newtree;
 }
+
+int altezza_iter(tree * root){
+    if (root == nullptr) {
+        return 0;
+    }
+    queue  * coda=init();
+    
+    enqueue(coda,root);
+    
+    int height = 0;
+    while (!empty(coda))
+    {
+        int dim = size(coda);
+        while (dim--)
+        {
+            const tree * front = first(coda);
+            dequeue(coda);
+ 
+            if (front->left) {
+              enqueue(coda,front->left);
+            }
+            if (front->right) {
+                enqueue(coda,front->right);
+            }
+        }
+        height++;
+    }
+ 
+    return height;
+}

@@ -140,42 +140,29 @@ int main() {
 
 // Add hereafter the definition of altezza_iter
 int altezza_iter(tree * root){
-    // empty tree has a height of 0
     if (root == nullptr) {
         return 0;
     }
- 
-    // create an empty queue and enqueue the root node
     queue  * coda=init();
     
     enqueue(coda,root);
- 
-    tree * front = nullptr;
+    
     int height = 0;
- 
-    // loop till queue is empty
-    while (!coda.empty())
+    while (!empty(coda))
     {
-        // calculate the total number of nodes at the current level
-        int size = coda->size();
- 
-        // process each node of the current level and enqueue their
-        // non-empty left and right child
-        while (size--)
+        int dim = size(coda);
+        while (dim--)
         {
-            front = coda.first();
-            coda.dequeue();
+            const tree * front = first(coda);
+            dequeue(coda);
  
             if (front->left) {
-                coda.dequeue(front->left);
+              enqueue(coda,front->left);
             }
- 
             if (front->right) {
-                coda.dequeue(front->right);
+                enqueue(coda,front->right);
             }
         }
- 
-        // increment height by 1 for each level
         height++;
     }
  
