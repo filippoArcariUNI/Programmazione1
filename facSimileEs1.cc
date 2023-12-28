@@ -5,16 +5,16 @@
 using namespace std;
 
 int main(int nArg,char * arg[]){
-     if (nArg != 4)
+     if (nArg != 3)
     {
-        cout << "Usage: ./a.out <fileInput> <fileNumeri> <fileOutput> \n";
+        cout << "Usage: ./a.out <fileInput> <fileOutput> \n";
         exit(1);
     }
     fstream in,out;
     in.open(arg[1],ios::in);
     out.open(arg[2],ios::out);
 
-    if (input.fail() || output.fail())
+    if (in.fail() || out.fail())
     {
         cout << "Errore nell' apertura dei file \n";
         exit(2);
@@ -27,5 +27,5 @@ int main(int nArg,char * arg[]){
     }
     
     in.close();
-    out.close
+    out.close();
 }
