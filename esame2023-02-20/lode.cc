@@ -3,21 +3,22 @@
 using namespace std;
 // Inserire qui sotto le definizioni delle funzioni SnowFlake e KochCurve
 void KochCurve(int  level, double line_length){
-    cout <<level<<endl;
     if (level==0)
     {
         cout<< "F("<<line_length<<");";
     }else{
-        level/=3;
-        if ((level%2)==0)
+        int tempLevel=level;
+
+        tempLevel/=3;
+        if ((tempLevel%2)==0)
         {
             level--;
-            // cout<<"RL(60);";
-            KochCurve(level,line_length);
+            cout<<"RL(60);";
+            KochCurve(level-1,line_length);
         }else{
             level--;
-            // cout<<"RL(120);";
-            KochCurve(level,line_length);
+            cout<<"RL(120);";
+            KochCurve(level-1,line_length);
         }
         
     }
@@ -25,6 +26,7 @@ void KochCurve(int  level, double line_length){
 }
 void SnowFlake(double line_length, int level){
     
+    cout<< level<< endl;
     KochCurve(level,line_length);
 }
 // Inserire qui sopra le definizioni delle funzioni SnowFlake e KochCurve
