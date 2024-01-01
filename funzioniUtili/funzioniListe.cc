@@ -51,3 +51,20 @@ int listOccurence(list * l,int value){
     }
     
 }
+
+int listSum(list* l){
+    if (l==nullptr)
+    {
+        return 0;
+    }else{
+        return l->info + listSum(l->next);
+    }
+}
+int listElement(list * l){
+    if (l==nullptr)
+    {
+        return 0;
+    }else{
+        return 1 + listElement(l->next);
+    }
+}

@@ -72,3 +72,17 @@ void bubbleSort(int arr[], int n)
             }
     }
 } 
+
+int indexMax(int * arr,int dim){
+    int max=0;
+    for (int i = 0; i < dim; i++)
+    {
+       if (arr[i]>max)
+       {
+            max=i;
+       }
+       
+    }
+    return max;
+    
+}

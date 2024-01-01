@@ -93,3 +93,23 @@ void deallocMatrix(int ** matrix, int rows){
     delete [] matrix[i];
     delete [] matrix;
 }
+
+void trasponiMatriceRecHelper(int ** matrix,int ** newMatrix,int righe, int colonne,int i,int j){
+    if (i>=righe)
+    {
+        return;
+    }else{
+        if (j==colonne)
+        {
+            j=0;
+            i++;
+        }
+        if (i<=colonne)
+        {
+            newMatrix[j][i]=matrix[i][j];
+            j++;
+        }
+        trasponiMatriceRecHelper(matrix,newMatrix,righe,colonne,i,j);
+    }
+    
+}
