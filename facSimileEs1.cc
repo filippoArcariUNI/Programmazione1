@@ -20,7 +20,7 @@ int main(int nArg,char * arg[]){
         exit(2);
     }
     
-    char str[101];
+    char str[256];
     while (in>> str)
     {
         

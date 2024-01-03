@@ -68,3 +68,15 @@ int listElement(list * l){
         return 1 + listElement(l->next);
     }
 }
+
+void reverse(list * &head)
+{
+    if (head == nullptr || head->next == nullptr) {
+        return;
+    }
+    list* tail = head;
+    head = head->next;
+    reverse(head);
+    tail->next->next = tail; 
+    tail->next = nullptr;
+}
