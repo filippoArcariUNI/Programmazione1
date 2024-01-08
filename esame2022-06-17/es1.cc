@@ -81,8 +81,6 @@ int main(int nArg,char * arg[]){
         
     }
     
-    
-    
     deallocMatrix(matrice,numStr);
     delete[] numeri;
     contaNum.close();

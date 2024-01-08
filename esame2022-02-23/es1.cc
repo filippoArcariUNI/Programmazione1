@@ -128,7 +128,6 @@ int findIndex(char  **parole,char * buffer){
     for (int i = 0; i < numParole; i++)
     {
         if(!strcmp(parole[i],buffer)){
-            // cout <<  parole[i]<<" " << buffer;
             return i;
         }
     }
