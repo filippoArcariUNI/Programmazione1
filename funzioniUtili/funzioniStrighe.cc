@@ -9,6 +9,7 @@ void toLower(char * str){
     }
     
 }
+
 char * circularShiftRight(char * str, int shift){
     
     int dim=0;
@@ -89,4 +90,36 @@ int grep(char * str,char * cercata){
             } 
         }
     return count;
+}
+
+void strCopy(char * str, char * copy){
+    
+    for (int i = 0; str[i]!='\0'; i++)
+    {
+        copy[i]=str[i];
+    }
+}
+
+bool strCompara(char * str1,char *str2){
+    for (int  i = 0; str1[i]!='\0'; i++)
+    {
+        if (str1[i]!=str2[i])
+        {
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+bool isPresente(char vocabolario[][100],char * str, int dim){
+    for (int i = 0; i < dim; i++)
+    {
+        if (strCompara(vocabolario[i],str))
+        {
+            return true;
+        }
+        
+    }
+    return false;
 }
