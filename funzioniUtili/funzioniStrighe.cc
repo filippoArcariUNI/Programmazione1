@@ -36,6 +36,8 @@ char * circularShiftLeft(char * str, int shift){
         temp[i]=str[index];
         
     }
+    temp[dim]='\0';
+
     return temp;
 }
 
