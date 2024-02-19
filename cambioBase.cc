@@ -50,12 +50,20 @@ int fromDecimaltoNmin10(int n, int base){
     return temp;
 }
 
-char * fromDecimaltoNsup10(int n, int base ,int dim){
+char * fromDecimaltoNsup10(int n, int base){
     int temp=0;
     int potenza=1;
-    int dimensione=dim; 
-    char num[dim];
-    for (int i = 0; i < dim; i++)
+
+    int dimensione=0;
+    int t=n;
+    while (t>0)
+    {
+        t/=10;
+        dimensione++;
+    }
+    int dim=dimensione;
+    char  *num= new char[dimensione];
+    for (int i = 0; i < dimensione; i++)
     {
         num[i]='@';
     }
@@ -68,20 +76,20 @@ char * fromDecimaltoNsup10(int n, int base ,int dim){
         
         if (corrente >=0 && corrente <=9)
         {
-            num[dim-1]=-'0'+corrente;
+            num[dimensione-1]=-'0'+corrente;
         }else if (corrente >9 && corrente <=36)
         {
-            num[dim-1] = 'a'+corrente-10;
+            num[dimensione-1] = 'a'+corrente-10;
         
         }
-        dim--;
+        dimensione--;
         potenza *=10;
     }
     char * numOrdinato=new char[dim];
     int j=0;
-    for (int i = 0; i < dimensione; i++)
+    for (int i = 0; i < dim; i++)
     {
-        cout << num[i] << i  <<  endl;
+        
         if (num[i]!='@')
         {
             numOrdinato[j]=num[i];
@@ -90,6 +98,8 @@ char * fromDecimaltoNsup10(int n, int base ,int dim){
         
     }
     numOrdinato[j]='\0';
+    
+    delete[] num;
     return numOrdinato;
 
 }
