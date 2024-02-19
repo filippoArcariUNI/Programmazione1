@@ -10,7 +10,7 @@ void toLower(char * str){
     
 }
 
-char * circularShiftLeft(char * str, int shift){
+char * circularShiftRight(char * str, int shift){
     
     int dim=0;
     for (int  i = 0; str[i]!='\0'; i++)
